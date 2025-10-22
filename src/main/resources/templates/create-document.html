@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Створити документ</title>
+</head>
+<body>
+<h1>Створити новий JSON документ</h1>
+
+<form th:action="@{/documents/save}" th:object="${document}" method="post">
+  <div>
+    <label for="name">Назва:</label>
+    <input type="text" id="name" th:field="*{name}" />
+  </div>
+  <div>
+    <label for="content">Вміст (JSON):</label>
+    <textarea id="content" th:field="*{content}" rows="10" cols="50"></textarea>
+  </div>
+  <div>
+    <button type="submit">Зберегти</button>
+  </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JSON Tool - Мої документи</title>
+</head>
+<body>
+<h1>Мої JSON документи</h1>
+
+<a th:href="@{/documents/new}">Створити новий документ</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Назва</th>
+        <th>Створено</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="doc : ${documents}">
+        <td th:text="${doc.id}">1</td>
+        <td th:text="${doc.name}">Test.json</td>
+        <td th:text="${doc.createdAt}">2025-10-21</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

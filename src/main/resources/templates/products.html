@@ -1,13 +1,139 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>JSON Tool - Головна</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* --- Шапка сайту --- */
+        header {
+            background-color: #ffffff;
+            color: #333;
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        header .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        header nav a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+            margin-left: 10px;
+        }
+
+        header nav a:hover {
+            background-color: #e9ecef;
+        }
+
+        /* --- "Герой" - головний блок --- */
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem;
+            background-color: #ffffff;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #495057;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Блок з кнопками --- */
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* Відстань між кнопками */
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.2s ease-in-out;
+            border: 2px solid transparent;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px); /* Легкий ефект "підйому" */
+            box-shadow: 0 4px 12px rgba(0,123,255,0.2);
+        }
+
+        /* Вторинна кнопка */
+        .button-secondary {
+            background-color: transparent;
+            color: #007bff;
+            border-color: #007bff;
+        }
+
+        .button-secondary:hover {
+            background-color: #e7f3ff;
+            color: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: none;
+        }
+    </style>
 </head>
 <body>
-Hello World
+
+<header>
+    <a th:href="@{/}" class="logo">JSON Tool</a>
+
+<!--    <nav>-->
+<!--        <a href="#">Увійти</a>-->
+<!--        <a href="#">Реєстрація</a>-->
+<!--    </nav>-->
+</header>
+
+<main>
+    <div class="hero">
+        <h1>Потужний інструмент для вашої роботи з JSON</h1>
+        <p>Валідуйте, редагуйте та керуйте вашими JSON-документами та схемами в одному місці.</p>
+
+        <div class="cta-buttons">
+            <a th:href="@{/documents}" class="button">Мої документи</a>
+
+            <a th:href="@{/documents/new}" class="button button-secondary">Створити новий</a>
+        </div>
+    </div>
+</main>
+
 </body>
 </html>

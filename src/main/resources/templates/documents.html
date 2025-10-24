@@ -1,28 +1,103 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>JSON Tool - Мої документи</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 2.5rem; /* Використовуємо rem для масштабування */
+            background-color: #f8f9fa; /* Світлий фон */
+            color: #212529; /* Темний колір тексту */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px; /* Округлені кути */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Сучасна тінь */
+        }
+
+        h1 {
+            color: #343a40;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Стилізація таблиці */
+        .document-table {
+            width: 100%;
+            border-collapse: collapse; /* Прибираємо подвійні лінії */
+            margin-top: 20px;
+        }
+
+        .document-table th,
+        .document-table td {
+            border-bottom: 1px solid #dee2e6; /* Тільки нижня лінія */
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .document-table thead th {
+            background-color: #f1f3f5;
+            color: #495057;
+            font-weight: 700; /* Жирний шрифт для заголовків */
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Ефект при наведенні миші на рядок */
+        .document-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Стилізація кнопки "Створити новий" */
+        .button {
+            display: inline-block; /* Робимо кнопку блочно-рядковою */
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out; /* Плавна анімація */
+            margin-top: 1.5rem;
+        }
+
+        .button:hover {
+            background-color: #0056b3; /* Темніший колір при наведенні */
+        }
+    </style>
 </head>
 <body>
-<h1>Мої JSON документи</h1>
+<div class="container">
+    <h1>Мої JSON документи</h1>
 
-<a th:href="@{/documents/new}">Створити новий документ</a>
+    <table class="document-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Назва документа</th>
+            <th>Дата Створення</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="doc : ${documents}">
+            <td th:text="${doc.id}">1</td>
+            <td th:text="${doc.name}" style="font-weight: 500;">Test.json</td>
+            <td th:text="${#temporals.format(doc.createdAt, 'dd.MM.yyyy HH:mm')}">25.10.2025 10:30</td>
+        </tr>
+        </tbody>
+    </table>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Назва</th>
-        <th>Створено</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="doc : ${documents}">
-        <td th:text="${doc.id}">1</td>
-        <td th:text="${doc.name}">Test.json</td>
-        <td th:text="${doc.createdAt}">2025-10-21</td>
-    </tr>
-    </tbody>
-</table>
+    <a th:href="@{/documents/new}" class="button">Створити новий документ</a>
+</div>
 </body>
 </html>
